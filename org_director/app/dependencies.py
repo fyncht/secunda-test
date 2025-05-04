@@ -1,6 +1,6 @@
 from fastapi import Header, HTTPException
 
-API_KEY = "secret_static_api_key"
+API_KEY = "SECRETLOVELYAPIKEY"
 
 
 def get_api_key(x_api_key: str = Header(...)):
