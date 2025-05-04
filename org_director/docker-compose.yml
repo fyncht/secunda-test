@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: orgs_db
+    ports:
+      - "5433:5432"
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/orgs_db
+      API_KEY: secret_static_api_key
+    ports:
+      - "8000:8000"
